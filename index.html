@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BuildWise — AI Construction Planning</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="logo">BuildWise</div>
+    <div class="nav-links">
+      <button id="modeToggle" class="btn mode-btn">🌙 Dark</button>
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>Generative AI for Construction Planning</h1>
+      <p>Enter project parameters to generate detailed cost, resources, schedule, and optimization insights.</p>
+    </div>
+
+    <div class="hero-card">
+      <h3>Enter Project Details</h3>
+      <div style="padding: 10px; margin-bottom: 15px; background: rgba(52,211,153,0.1); border-radius: 8px; font-size: 13px; color: #34d399;">
+        🤖 <strong>AI Enabled:</strong> Add your <a href="https://ai.google.dev" target="_blank" style="color: #22d3ee; text-decoration: underline;">Gemini API key</a> to script.js for smart recommendations.
+      </div>
+      <form id="projectForm">
+
+        <label><strong>Project Type</strong></label>
+        <select id="type" required class="input">
+          <option value="" disabled selected>Select Project Type</option>
+          <option value="residential">Residential</option>
+          <option value="commercial">Commercial</option>
+          <option value="industrial">Industrial</option>
+        </select>
+
+        <input id="area" type="number" placeholder="Project Area (sq ft)" required class="input">
+
+        <label><strong>Location Type</strong></label>
+        <select id="location" required class="input">
+          <option value="" disabled selected>Select Location</option>
+          <option value="rural">Rural</option>
+          <option value="urban">Urban</option>
+        </select>
+
+        <input id="budget" type="number" placeholder="Estimated Budget (₹)" required class="input">
+
+        <label><strong>Project Start Date (optional)</strong></label>
+        <input id="startDate" type="date" class="input">
+
+        <label><strong>Workdays per Week</strong></label>
+        <select id="workdays" class="input">
+          <option value="6" selected>6 (Mon-Sat)</option>
+          <option value="5">5 (Mon-Fri)</option>
+        </select>
+
+        <label><strong>Weather/Delay Buffer (%)</strong></label>
+        <input id="weatherBuffer" type="number" min="0" max="50" value="12" class="input" placeholder="Percent (e.g. 12)">
+
+        <button type="submit" class="btn full">Generate Plan</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- OUTPUT DASHBOARD -->
+  <div class="results" id="results">
+    <div class="grid">
+
+      <div class="result-card" data-key="cost"><h4>💰 Cost Estimation</h4><p id="outCost"></p>
+        <canvas id="costChart" class="result-chart" style="display:none"></canvas>
+      </div>
+      <div class="result-card" data-key="resources"><h4>👷 Resource Planning</h4><p id="outResources"></p>
+        <canvas id="resourcesChart" class="result-chart" style="display:none"></canvas>
+      </div>
+      <div class="result-card" data-key="schedule"><h4>📅 Schedule Generation</h4><p id="outSchedule"></p>
+        <canvas id="scheduleChart" class="result-chart" style="display:none"></canvas>
+      </div>
+      <div class="result-card" data-key="optimization"><h4>🚀 Project Optimization</h4><p id="outOptimization"></p>
+        <canvas id="optimizationChart" class="result-chart" style="display:none"></canvas>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>© 2026 BuildWise — AI Construction Planning Platform</footer>
+
+  <!-- External JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
