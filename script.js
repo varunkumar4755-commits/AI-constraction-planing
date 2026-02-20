@@ -555,3 +555,4 @@ document.querySelectorAll('.result-card').forEach(card => {
     if(config) createOrUpdateChart(canvasId, config);
   });
 });
+
